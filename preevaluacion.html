@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preevaluación | Cuidados Domiciliarios</title>
+
+    <!-- SCRIPT DE SEGURIDAD (Debe ir arriba) -->
+    <script>
+        // Si no tiene la llave, lo expulsa al index.html inmediatamente
+        if (sessionStorage.getItem('accesoPermitido') !== 'true') {
+            window.location.replace('index.html');
+        } else {
+            // Opcional: Una vez que entra, destruimos la llave.
+            // Así, si recarga la página o intenta entrar de nuevo más tarde, lo expulsará.
+            sessionStorage.removeItem('accesoPermitido');
+        }
+    </script>
+
+    <!-- Tus estilos y fuentes aquí... -->
+    <link rel="stylesheet" href="style.css">
+    <script src="evaluacion.js" defer></script>
+</head>
+
+<!-- ENCABEZADO (Mismo diseño, logo central lleva al inicio) -->
+<header class="header">
+    <div class="header-inner">
+        <!-- IZQUIERDA: Bloque de Logo Municipal y del Programa -->
+        <div class="header-brand">
+            <a href="https://www.independencia.cl" target="_blank" rel="noopener noreferrer" class="header-logo logo-muni">
+                <img src="images/logomuni.png" alt="Ilustre Municipalidad de Independencia">
+            </a>
+            <div class="brand-vdivider"></div>
+            <!-- Enlace modificado para volver a la página principal -->
+            <a href="index.html" class="header-logo logo-program" aria-label="Volver al inicio">
+                <img src="images/logoPCD.png" alt="Programa Cuidados Domiciliarios">
+            </a>
+        </div>
+        <!-- DERECHA: Logo de SENAMA -->
+        <a href="https://www.senama.gob.cl" target="_blank" rel="noopener noreferrer" class="header-logo logo-senama">
+            <img src="images/senama.png" alt="SENAMA - Servicio Nacional del Adulto Mayor">
+        </a>
+    </div>
+</header>
+
+<!-- SECCIÓN DE FORMULARIO -->
+<section class="section-eval">
+    <div class="wrap eval-wrap">
+        <div class="eval-header">
+            <span class="section-label">Sistema de ingreso</span>
+            <h1 class="section-title">Encuesta de Preevaluación</h1>
+            <p>Responda las siguientes preguntas para verificar si el candidato cumple con los requisitos básicos de ingreso al programa. Todas las respuestas son obligatorias.</p>
+        </div>
+
+        <form id="formEvaluacion" class="eval-form">
+
+            <!-- PREGUNTA 1: EDAD -->
+            <div class="eval-card">
+                <p class="eval-q">1. ¿La persona a evaluar tiene 60 años o más?</p>
+                <div class="eval-options">
+                    <label class="radio-option">
+                        <input type="radio" name="edad" value="si" required>
+                        <span class="radio-box">Sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="edad" value="no">
+                        <span class="radio-box">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 2: DEPENDENCIA -->
+            <div class="eval-card">
+                <p class="eval-q">2. ¿Qué nivel de dependencia posee? <span class="eval-hint">(necesita apoyo en sus actividades de la vida diaria, ejemplo: no poder hacer sus compras por si sola, no poder prepararse sus alimentos, no bañarse sola)</span></p>
+                <div class="eval-options" style="flex-direction: column; gap: 10px;">
+                    <label class="radio-option">
+                        <input type="radio" name="dependencia" value="leve" required>
+                        <span class="radio-box">Dependencia Leve</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="dependencia" value="mod_sev">
+                        <span class="radio-box">Dependencia Moderada o Severa</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="dependencia" value="ninguna">
+                        <span class="radio-box">Sin dependencia / Autovalente</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 3: RSH COMUNA -->
+            <div class="eval-card">
+                <p class="eval-q">3. ¿Tiene Registro Social de Hogares domiciliado en Independencia?</p>
+                <div class="eval-options">
+                    <label class="radio-option">
+                        <input type="radio" name="rsh_indep" value="si" required>
+                        <span class="radio-box">Sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="rsh_indep" value="no">
+                        <span class="radio-box">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 4: RSH RANGO -->
+            <div class="eval-card">
+                <p class="eval-q">4. ¿Qué rango de Registro Social de Hogares posee?</p>
+                <select name="rsh_rango" class="form-select" required>
+                    <option value="" disabled selected>Seleccione una opción...</option>
+                    <option value="0_40">0 a 40%</option>
+                    <option value="41_60">41 a 60%</option>
+                    <option value="61_mas">61% o más</option>
+                    <option value="no_sabe">No lo sé</option>
+                </select>
+            </div>
+
+            <!-- PREGUNTA 5: VIVE SOLO -->
+            <div class="eval-card">
+                <p class="eval-q">5. ¿Vive solo?</p>
+                <div class="eval-options">
+                    <label class="radio-option">
+                        <input type="radio" name="vive_solo" value="si" id="vive_solo_si" required>
+                        <span class="radio-box">Sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="vive_solo" value="no" id="vive_solo_no">
+                        <span class="radio-box">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 6: CANTIDAD DE PERSONAS (Dinámica) -->
+            <div class="eval-card disabled-card" id="card_personas">
+                <p class="eval-q">6. En caso de que no, ¿cuántas personas viven?</p>
+                <div class="eval-options">
+                    <label class="radio-option">
+                        <input type="radio" name="personas" value="1">
+                        <span class="radio-box">1</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="personas" value="2_mas">
+                        <span class="radio-box">2 o más</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 7: CUIDADOR -->
+            <div class="eval-card">
+                <p class="eval-q">7. ¿Cuenta con cuidador principal? <span class="eval-hint">(persona que apoye en la realización de las actividades diarias)</span></p>
+                <div class="eval-options">
+                    <label class="radio-option">
+                        <input type="radio" name="cuidador" value="si" required>
+                        <span class="radio-box">Sí</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="cuidador" value="no">
+                        <span class="radio-box">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- BOTÓN ENVIAR -->
+            <div class="eval-submit-area">
+                <button type="submit" class="btn-cta btn-submit">Evaluar candidato</button>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER (Mismo que el index) -->
+<footer class="footer" aria-label="Pie de página">
+    <div class="footer-inner">
+        <p class="ft-program">Programa de Cuidados Domiciliarios Independencia</p>
+        <div class="footer-divider"></div>
+        <p>Ilustre Municipalidad de Independencia · En convenio con el Servicio Nacional del Adulto Mayor (SENAMA)<br>
+            Gobierno de Chile — Servicio gratuito para la comunidad</p>
+        <nav class="footer-links" aria-label="Enlaces institucionales">
+            <a href="https://www.independencia.cl" target="_blank" rel="noopener noreferrer">Municipalidad de Independencia</a>
+            <a href="https://www.senama.gob.cl" target="_blank" rel="noopener noreferrer">SENAMA</a>
+            <!-- Desactivamos los popups aquí porque el JS original no está cargado en esta página -->
+        </nav>
+        <p class="footer-copy">© 2026 Ilustre Municipalidad de Independencia. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- MODAL DE RESULTADO -->
+<div class="modal-overlay" id="modalResult" role="dialog" aria-modal="true">
+    <div class="modal-box" id="resultBox">
+        <div class="modal-logo" id="resultIcon">⏳</div>
+        <h3 id="resultTitle">Evaluando...</h3>
+        <p id="resultText">Por favor espere un momento.</p>
+        <button class="btn-modal-close" id="btnResultClose" style="display: none;">Cerrar</button>
+    </div>
+</div>
+
+</body>
+</html>

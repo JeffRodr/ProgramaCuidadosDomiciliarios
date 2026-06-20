@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Cuidados Domiciliarios | Municipalidad de Independencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+
+        <!-- IZQUIERDA: Bloque de Logo Municipal y del Programa -->
+        <div class="header-brand">
+
+            <!-- Logo Municipalidad (Lleva al sitio web oficial en pestaña nueva) -->
+            <a href="https://www.independencia.cl" target="_blank" rel="noopener noreferrer" class="header-logo logo-muni">
+                <img src="images/logomuni.png" alt="Ilustre Municipalidad de Independencia">
+            </a>
+
+            <div class="brand-vdivider"></div>
+
+            <!-- Logo Cuidados Domiciliarios (Lleva al inicio de la página) -->
+            <a href="#" class="header-logo logo-program" aria-label="Volver al inicio">
+                <img src="images/logoPCD.png" alt="Programa Cuidados Domiciliarios">
+            </a>
+        </div>
+
+        <!-- DERECHA: Logo de SENAMA (Lleva al sitio web oficial en pestaña nueva) -->
+        <a href="https://www.senama.gob.cl" target="_blank" rel="noopener noreferrer" class="header-logo logo-senama">
+            <img src="images/senama.png" alt="SENAMA - Servicio Nacional del Adulto Mayor">
+        </a>
+
+    </div>
+</header>
+
+<section class="carousel-wrapper" id="carousel" aria-label="Galería fotográfica del programa">
+    <div class="carousel-track" id="carouselTrack">
+        <!-- Foto 1 -->
+        <div class="carousel-slide" id="slide-0">
+            <img src="images/PCD01.jpeg" alt="Equipo municipal" loading="eager">
+            <div class="slide-label">
+                <span class="slide-icon">🏠</span>
+                <span>Equipo Municipal</span>
+            </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="carousel-slide" id="slide-1">
+            <img src="images/PCD02.jpeg" alt="Atención profesional a persona mayor" loading="lazy">
+            <div class="slide-label">
+                <span class="slide-icon">🤝</span>
+                <span>Atención con dignidad</span>
+            </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="carousel-slide" id="slide-2">
+            <img src="images/PCD03.jpeg" alt="Asistente en evaluacion con usuaria" loading="lazy">
+            <div class="slide-label">
+                <span class="slide-icon">👩‍⚕️</span>
+                <span>Asistentes en evaluacion con usuaria</span>
+            </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="carousel-slide" id="slide-3">
+            <img src="images/PCD04.jpeg" alt="Usuaria en actividades" loading="lazy">
+            <div class="slide-label">
+                <span class="slide-icon">🧴</span>
+                <span>Actividades para usuarios</span>
+            </div>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="carousel-slide" id="slide-4">
+            <img src="images/PCD05.jpeg" alt="Usuaria en Oficina del Adulto Mayor" loading="lazy">
+            <div class="slide-label">
+                <span class="slide-icon">💜</span>
+                <span>Usuaria y cuidadora</span>
+            </div>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="carousel-slide" id="slide-5">
+            <img src="images/PCD06.jpeg" alt="Asistente y usuario" loading="lazy">
+            <div class="slide-label">
+                <span class="slide-icon">📋</span>
+                <span>Cuidados en domicilio</span>
+            </div>
+        </div>
+
+        <!-- Foto 7 -->
+        <div class="carousel-slide" id="slide-6">
+            <img src="images/PCD07.jpeg" alt="Entrega de insumos" loading="lazy">
+            <div class="slide-label">
+                <span class="slide-icon">🌸</span>
+                <span>Entrega de insumos</span>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-arrow prev" id="btnPrev" aria-label="Foto anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+    </button>
+    <button class="carousel-arrow next" id="btnNext" aria-label="Foto siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+        </svg>
+    </button>
+
+    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Seleccionar foto"></div>
+
+    <div class="carousel-progress" id="carouselProgress"></div>
+</section>
+
+<div class="hero-strip">
+    <h1>Cuidado con dignidad, directamente en tu hogar</h1>
+    <p>Un programa de la Municipalidad de Independencia que brinda apoyo sociosanitario gratuito a personas mayores con dependencia, directamente en su domicilio.</p>
+</div>
+
+<section class="section-about" aria-labelledby="about-title">
+    <div class="wrap">
+        <span class="section-label">¿Qué es el programa?</span>
+        <div class="about-grid">
+            <div class="about-text">
+                <h2 id="about-title" class="section-title">Apoyo sociosanitario integral para quienes más lo necesitan</h2>
+                <p>El <strong>Programa de Cuidados Domiciliarios</strong> es una iniciativa ejecutada por la Ilustre Municipalidad de Independencia, en convenio con el Servicio Nacional del Adulto Mayor (<strong>SENAMA</strong>), que atiende a personas mayores con dependencia moderada o severa directamente en sus hogares.</p>
+                <div class="about-highlight">
+                    💡 <strong>El servicio es completamente gratuito</strong> para los beneficiarios y sus familias. El programa cubre visitas domiciliarias, insumos médicos y sociales, y acompañamiento profesional continuo.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-requirements" aria-labelledby="req-title">
+    <div class="wrap">
+        <div class="req-header">
+            <span class="section-label">Requisitos de postulación</span>
+            <h2 id="req-title" class="section-title">¿Quién puede participar en el programa?</h2>
+            <p class="req-subtitle">Para ser considerado como beneficiario, el postulante debe cumplir con los siguientes criterios. Todos serán verificados por el equipo profesional durante el proceso de evaluación en domicilio.</p>
+        </div>
+
+        <div class="req-grid">
+            <div class="req-card">
+                <div class="req-icon">👴</div>
+                <div class="req-num">01</div>
+                <h3>Ser persona mayor</h3>
+                <p>El programa está dirigido exclusivamente a personas que califican como adulto mayor de acuerdo con la normativa del Servicio Nacional del Adulto Mayor (SENAMA).</p>
+            </div>
+            <div class="req-card">
+                <div class="req-icon">♿</div>
+                <div class="req-num">02</div>
+                <h3>Dependencia moderada o severa</h3>
+                <p>El postulante debe presentar un nivel de dependencia moderada o severa para las actividades de la vida diaria, evaluado mediante instrumentos técnicos estandarizados.</p>
+            </div>
+            <div class="req-card">
+                <div class="req-icon">📍</div>
+                <div class="req-num">03</div>
+                <h3>Residir en la comuna de Independencia</h3>
+                <p>El domicilio del postulante debe encontrarse dentro de los límites territoriales de la comuna de Independencia, ya que el programa opera bajo la administración municipal local.</p>
+            </div>
+            <div class="req-card">
+                <div class="req-icon">👥</div>
+                <div class="req-num">04</div>
+                <h3>Sin cuidador principal en el hogar</h3>
+                <p>El beneficiario no debe contar con una red de cuidado familiar o informal suficiente que pueda proveer apoyo de manera regular y sostenida en el hogar.</p>
+            </div>
+            <div class="req-card">
+                <div class="req-icon">💰</div>
+                <div class="req-num">05</div>
+                <h3>Situación de vulnerabilidad socioeconómica</h3>
+                <p>El postulante debe encontrarse en una situación de vulnerabilidad socioeconómica que le dificulte acceder por sus propios medios a servicios de cuidado y apoyo.</p>
+            </div>
+            <div class="req-card">
+                <div class="req-icon">✅</div>
+                <div class="req-num">06</div>
+                <h3>Voluntad de participar y comprometerse</h3>
+                <p>El postulante debe estar en condiciones de firmar la carta de compromiso de derechos y deberes que formaliza su participación en el programa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-process" aria-labelledby="process-title">
+    <div class="wrap">
+        <span class="section-label">¿Cómo postular?</span>
+        <h2 id="process-title" class="section-title">Proceso de ingreso al programa</h2>
+        <div class="process-grid">
+            <div class="step">
+                <div class="step-circle">1</div>
+                <h4>Derivación o solicitud</h4>
+                <p>Un CESFAM, programa municipal, familiar, vecino u otra entidad comunica al programa sobre el postulante.</p>
+            </div>
+            <div class="step">
+                <div class="step-circle">2</div>
+                <h4>Visita preliminar</h4>
+                <p>El equipo realiza una visita al domicilio para informar sobre el programa y evaluar el perfil básico del postulante.</p>
+            </div>
+            <div class="step">
+                <div class="step-circle">3</div>
+                <h4>Evaluación técnica</h4>
+                <p>Se ejecutan visitas adicionales para aplicar tests estandarizados y completar las fichas de ingreso.</p>
+            </div>
+            <div class="step">
+                <div class="step-circle">4</div>
+                <h4>Asignación y formalización</h4>
+                <p>Se asigna una asistente compatible, se presenta el plan de trabajo y se firma la carta de compromiso.</p>
+            </div>
+            <div class="step">
+                <div class="step-circle">5</div>
+                <h4>Ingreso al programa</h4>
+                <p>El beneficiario comienza a recibir visitas regulares, insumos mensuales y prestaciones sociosanitarias en su hogar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-cta" aria-labelledby="cta-title">
+    <div class="wrap">
+        <div class="cta-card">
+            <div class="cta-icon">📋</div>
+            <h2 id="cta-title">¿Conoces a alguien que podría beneficiarse?</h2>
+            <p>Si crees que tú o alguien que conozcas cumple con los requisitos del programa, te invitamos a completar nuestra encuesta de preevaluación. En pocos minutos podrás saber si el caso reúne las condiciones básicas para postular y un profesional del equipo se pondrá en contacto contigo a la brevedad.</p>
+            <a href="preevaluacion.html" class="btn-cta" id="btnIrPreevaluacion">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+                    <rect x="9" y="3" width="6" height="4" rx="1"/>
+                    <line x1="9" y1="12" x2="15" y2="12"/>
+                    <line x1="9" y1="16" x2="13" y2="16"/>
+                </svg>
+                Completar encuesta preevaluativa
+            </a>
+            <p class="cta-note">La encuesta es de carácter informativo. Un profesional evaluará el caso y se comunicará con usted.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer" aria-label="Pie de página">
+    <div class="footer-inner">
+        <p class="ft-program">Programa de Cuidados Domiciliarios Independencia</p>
+        <div class="footer-divider"></div>
+        <p>Ilustre Municipalidad de Independencia · En convenio con el Servicio Nacional del Adulto Mayor (SENAMA)<br>
+            Gobierno de Chile — Servicio gratuito para la comunidad</p>
+        <nav class="footer-links" aria-label="Enlaces institucionales">
+            <a href="https://www.independencia.cl" target="_blank" rel="noopener noreferrer">Municipalidad de Independencia</a>
+            <a href="https://www.senama.gob.cl" target="_blank" rel="noopener noreferrer">SENAMA</a>
+            <a href="#" id="btnPrivacy" aria-haspopup="dialog">Política de privacidad</a>
+            <<a href="#" id="btnContact" aria-haspopup="dialog">Contacto</a>
+        </nav>
+        <p class="footer-copy">© 2026 Ilustre Municipalidad de Independencia. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+        <div class="modal-logo">📬</div>
+        <h3 id="modal-title">Encuesta preevaluativa</h3>
+        <span class="modal-badge">✦ Próximamente disponible ✦</span>
+        <p>La encuesta preevaluativa en línea estará habilitada muy pronto. Mientras tanto, puedes contactar directamente al equipo del programa para iniciar el proceso de postulación:</p>
+        <p>
+            <strong>Municipalidad de Independencia</strong><br>
+            Unidad de Cuidados Domiciliarios<br>
+            <a href="#" style="color: var(--purple-mid); text-decoration: none;">cuidadosdomiciliarios@independencia.cl</a>
+        </p>
+        <button class="btn-modal-close" id="btnModalClose">Entendido, cerrar</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modalPrivacyOverlay" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+    <div class="modal-box">
+        <div class="modal-logo">🛡️</div>
+        <h3 id="privacy-title">Política de Privacidad</h3>
+        <p style="text-align: left; margin-bottom: 16px;">
+            En el Programa de Cuidados Domiciliarios de Independencia valoramos tu seguridad. Nuestra encuesta de preevaluación es <strong>estrictamente anónima e informativa</strong>.
+        </p>
+        <ul style="text-align: left; font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 24px; padding-left: 20px;">
+            <li style="margin-bottom: 8px;"><strong>No solicitamos identificación:</strong> En esta etapa no te pediremos tu RUT, nombre completo ni dirección exacta.</li>
+            <li style="margin-bottom: 8px;"><strong>Propósito de la información:</strong> Los datos generales (rango de edad, nivel de dependencia) se procesan instantáneamente solo para indicarte si cumples con los requisitos básicos del programa.</li>
+            <li><strong>Siguientes pasos:</strong> Si la preevaluación es favorable, se te indicará cómo contactar formalmente al equipo municipal. Solo en esa instancia presencial o directa se iniciará una ficha clínica bajo estrictos protocolos de confidencialidad de la Ley 19.628.</li>
+        </ul>
+        <button class="btn-modal-close" id="btnPrivacyClose">Comprendo, cerrar</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modalContactOverlay" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+    <div class="modal-box">
+        <div class="modal-logo">✉️</div>
+        <h3 id="contact-title">Contacto</h3>
+        <p style="margin-bottom: 24px;">Para más información o consultas específicas, puedes comunicarte directamente con el equipo del programa a través de los siguientes correos electrónicos:</p>
+
+        <p style="margin-bottom: 32px; font-size: 0.95rem;">
+            <a href="mailto:maparraguez@independencia.cl" style="color: var(--purple-mid); text-decoration: none; font-weight: 700; display: block; margin-bottom: 8px;">maparraguez@independencia.cl</a>
+            <a href="mailto:psalvatierra@independencia.cl" style="color: var(--purple-mid); text-decoration: none; font-weight: 700; display: block;">psalvatierra@independencia.cl</a>
+        </p>
+
+        <button class="btn-modal-close" id="btnContactClose">Entendido, cerrar</button>
+    </div>
+</div>
+
+</body>
+</html>
